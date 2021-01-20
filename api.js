@@ -153,10 +153,10 @@ function checkQuestions(){
     for(let i = 0; i < total.length; i++){
         if(total == document.getElementById('answer'+ [i]).checked){
            (answersChecked.push(document.getElementById('answer'+[i]).value));
-           alert('Correcta')
+           alert('Correcta bien')
         }
         else{
-            alert('Incorrecta')
+            alert('Incorrecta mal')
         }
     };
     console.log(answersChecked);
