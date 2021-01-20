@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/questions" onsubmit="event.preventDefault() ,getQuestions()">
+                            <div class="form-group">
+                                <label for="totalQuestions">Cantidad de preguntas</label>
+                                <select class="form-control" id="totalQuestions" required>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="select-category">Categoría</label>
+                                <select class="form-control" id="select-category" required>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="select-difficulty">Dificultad</label>
+                                <select class="form-control" id="select-difficulty" required>
+                                    <option value="easy">Easy</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="hard">Hard</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="select-type">Tipo</label>
+                                <select class="form-control" id="select-type" required>
+                                    <option value="multiple">multiple</option>
+                                    <option value="boolean">falso o verdadero</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Obtener preguntas</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="questions-container">
+            <!-- Aquí va el contenido -->
+
+        </div>
+        <div class="row" id="answers">
+            <form action="./answers.html" onsubmit="event.preventDefault(), checkQuestions()">
+                <button type="submit" class="btn btn-secondary">check</button>
+            </form>
+        </div>
+    </div>
+    <script src="./api.js"></script>
+</body>
+</html>
