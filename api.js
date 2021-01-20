@@ -158,6 +158,7 @@ function checkQuestions(){
         else{
             alert('Incorrecta mal')
         }
+        break;
     };
     console.log(answersChecked);
     console.log(answerIncorrect);
