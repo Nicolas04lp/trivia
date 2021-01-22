@@ -23,7 +23,8 @@ function getQuestions() {
     let totalAnswerIncorrect = [];
     let total = [ ];
 
-
+    let answerCorrect = [ ];
+    let answerIncorrect = [ ];
     
 
 function printData(data) {
@@ -36,6 +37,8 @@ function printData(data) {
             let randomD = random(element.correct_answer, element.incorrect_answers);
 
             total.push(element.correct_answer , ...element.incorrect_answers) 
+            answerCorrect.push(element.correct_answer)
+            answerIncorrect.push(element.incorrect_answers)
 
             container.innerHTML += `<div class="col-md-4 mt-2">
                                         <div class="card p-4">
@@ -52,27 +55,27 @@ function printData(data) {
                                                 ${element.correct_answer}
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="result${[i]}" id="answer${[i]}" required>
-                                                <label class="form-check-label" for="answer${[i]}">
-                                                     ${value = randomD[0]}
+                                                <input class="form-check-input" type="radio" value="${randomD[0]}" name="result${[i]}" id="answer${[i]}0" required>
+                                                <label class="form-check-label" for="answer">
+                                                     ${randomD[0]}
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="result${[i]}" id="answer${[i]}" required>
-                                                <label class="form-check-label" for="answer${[i]}">
-                                                    ${value = randomD[1]}
+                                                <input class="form-check-input" type="radio" value="${randomD[1]}" name="result${[i]}" id="answer${[i]}1" required checked>
+                                                <label class="form-check-label" for="answer">
+                                                    ${randomD[1]}
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="result${[i]}" id="answer${[i]}"required>
-                                                <label class="form-check-label" for="answer${[i]}">
-                                                    ${value = randomD[2]}
+                                                <input class="form-check-input" type="radio" value="${randomD[2]}" name="result${[i]}" id="answer${[i]}2"required>
+                                                <label class="form-check-label" for="answer">
+                                                    ${randomD[2]}
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input p-3" type="radio" name="result${[i]}" id="answer${[i]}"required>
-                                                <label class="form-check-label" for="answer${[i]}">
-                                                    ${value = randomD[3]}
+                                                <input class="form-check-input p-3" type="radio" value="${randomD[3]}" name="result${[i]}" id="answer${[i]}3"required>
+                                                <label class="form-check-label" for="answer">
+                                                    ${randomD[3]}
                                                 </label>
                                             </div>
                                         </div>
@@ -111,13 +114,13 @@ function printData(data) {
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="result${[i]}" id="answer${[i]}"required>
-                                                <label class="form-check-label" for="correct">
+                                                <label class="form-check-label" for="answer">
                                                     ${randomD[0]}
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="result${[i]}" id="answer${[i]}"required>
-                                                <label class="form-check-label" for="incorrect">
+                                                <label class="form-check-label" for="answer">
                                                     ${randomD[1]}
                                                 </label>
                                             </div>
@@ -133,51 +136,33 @@ function printData(data) {
 
 };
 
-// let result = [];
-
-// function checkQuestions(){
-//     for(let i = 0; i < total.length; i++){
-//         if(document.getElementById('answer'+[i]).checked == true){
-//             const xd = 'Hola';
-//         }   
-//         console.log(xd);
-//     }
-    
-    
-// }
 
 let answersChecked = [];
-let answerCorrect = [];
-let answerIncorrect = [];
 function checkQuestions(){
-    for(let i = 0; i < total.length; i++){
-        if(total == document.getElementById('answer'+ [i]).checked){
-           (answersChecked.push(document.getElementById('answer'+[i]).value));
-           alert('Correcta bien')
-        }
-        else{
-            alert('Incorrecta mal')
-        }
-        break;
+    const checkedInputs = document.querySelectorAll('input:checked');
+    for(let i = 0; i < checkedInputs.length; i++){
+        answersChecked.push(checkedInputs[i].value);
+    }
+    // console.log(answersChecked)
     };
-    console.log(answersChecked);
-    console.log(answerIncorrect);
-    comparationAnswers();
-}
+
+
+
 
     let answerCorrectCount = 0;
     let answerIncorrectCount = 0;
 
 function comparationAnswers(){
-    answersChecked.forEach((b) => {
-        if(answerCorrectCount[b] == answersChecked[b]){
-            answerCorrectCount ++ ;
+    answersChecked.forEach((b, index) => {
+        // si answer corect es igual a answercheck¿ek que le sume uno a correctcount
+        if(answerCorrect[index] == answersChecked[index]){
+            answerCorrectCount++ ;
         }else{
-            answerIncorrectCount ++;
+            answerIncorrectCount++;
         }
     })
-    console.log('Estas son las correctas'+''+answerCorrect.value);
-    console.log('Estas son las Incorrectas'+''+answerIncorrect.value);
+    localStorage.setItem("Buenas", answerCorrectCount);
+    localStorage.setItem("Malas", answerIncorrectCount); 
 }
 
 
@@ -193,7 +178,6 @@ function printCategories(categories) {
 
 
 getCategories();
-
 
 
 function random(correct, incorrects){
