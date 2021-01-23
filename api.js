@@ -154,7 +154,7 @@ function checkQuestions(){
 
 function comparationAnswers(){
     answersChecked.forEach((b, index) => {
-        // si answer corect es igual a answercheck¿ek que le sume uno a correctcount
+        // si answer corect es igual a answercheckÂ¿ek que le sume uno a correctcount
         if(answerCorrect[index] == answersChecked[index]){
             answerCorrectCount++ ;
         }else{
@@ -188,8 +188,6 @@ function random(correct, incorrects){
     })
     return array;
 }
-
-
 
 
 
