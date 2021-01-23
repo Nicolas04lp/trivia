@@ -61,7 +61,7 @@ function printData(data) {
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="${randomD[1]}" name="result${[i]}" id="answer${[i]}1" required checked>
+                                                <input class="form-check-input" type="radio" value="${randomD[1]}" name="result${[i]}" id="answer${[i]}1" required>
                                                 <label class="form-check-label" for="answer">
                                                     ${randomD[1]}
                                                 </label>
