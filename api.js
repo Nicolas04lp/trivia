@@ -163,8 +163,9 @@ function comparationAnswers(){
     })
     localStorage.setItem("Buenas", answerCorrectCount);
     localStorage.setItem("Malas", answerIncorrectCount); 
-}
+    window.location.href = "/answers.html";
 
+}
 
 
 

@@ -1,14 +1,22 @@
-// let buenas = localStorage.getItem('Buenas');
-// let malas = localStorage.getItem('Malas');
 
 
-// function printResults(){
-// container = document.getElementById('answers-container');
+ let buenas = localStorage.getItem('Buenas');
+ let malas = localStorage.getItem('Malas');
 
-// container.innerHTML += `<div class="container">
-//                         <button type="button" class="btn btn-primary">Primary</button>
-//                         <button type="button" class="btn btn-primary">Primary</button>
-//                         <button type="button" class="btn btn-primary">Primary</button>
-//                         </div>`
-
-// }
+ function results(){
+    let container = document.getElementById('answers-container');
+    
+    container.innerHTML += `<div class="container mt-5">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <button type="submit" class="btn btn-primary col-md-12 mt-2">Buenas ${buenas}</button>
+                                                <button type="submit" class="btn btn-warning col-md-12 mt-2">Malas ${malas}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`
+}
+console.log(buenas);
+console.log(malas)
